@@ -1,0 +1,19 @@
+{
+  "current": {
+    "color_text": "#708090",
+    "color_body_text":"#5F9EA0",
+    "color_sale_text": "#DC143C",
+    "color_button": "#008000",
+    "color_button_text": "#2F4F4F",
+
+    "sections": {
+      "hero-1": {
+        "type": "hero"
+      }
+    },
+
+    "content_for_index": [
+      "hero-1"
+    ]
+  }
+}

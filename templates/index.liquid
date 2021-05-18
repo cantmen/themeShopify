@@ -1,0 +1,47 @@
+<div class="cfi">
+  {{content_for_index}}
+</div>
+
+<!--
+{% for product in collections.frontpage.products limit:4 %}
+  <div>
+    <a href="{{ product.url | within: collection }}">{{ product.title }}</a>
+    {{ product.price | money }}
+    {% unless product.available %}<br><strong>sold out</strong>{% endunless %}
+    <a href="{{ product.url | within: collection }}">
+      <img src="{{ product.featured_image.src | img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}">
+    </a>
+  </div>
+{% endfor %}
+-->
+
+
+  {% comment %} {%- for collection in collections -%}
+    
+    <p> {{ collection.title }} - <a href="{{ collection.url }}"> click here </a> </p>
+
+    <ul> 
+
+      {%- for product in collection.products -%}
+        <li>
+          <p> <a href="{{ product.url }}"> {{ product.title }} </a> </p>
+          <img src="{{ product | img_url: '160x' }}"/>
+
+        <!-- {%- if collection.image -%}
+            {%- assign collection_image = collection.image -%}
+          {%- elsif product and collection.products.images != empty -%}
+            {%- assign collection_image = collection.products.featured_image -%}
+          {%- else -%}
+            {%- assign collection_image = blank -%}
+          {%- endif -%}
+
+          <a href="{{ collection.url }}">
+            <img src="{{ collection_image | img_url: '480x' }}" alt="">
+            {{ collection.title }}
+          </a> -->
+        </li>
+      {%- endfor -%}
+
+    </ul>
+
+  {%- endfor -%} {% endcomment %}
