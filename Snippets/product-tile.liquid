@@ -1,0 +1,6 @@
+<a href="{{ product.url }}" class= "product-tile">
+    <img class= "product-tile__image " src= " {{ product.featured_image | img_url: 'master' }}" alt="{{ product.featured_image.alt }}" />
+    <div class= "product-tile__info">
+        <h3 class= "product-tile__title"> {{product.title}}</h3>
+        <span class= "product-tile__price"> {{product.price | money}} </span> 
+</a>
