@@ -70,6 +70,20 @@
 
 
 {% section 'header' %}
+
+{{ content_for_layout }}
+
+
+{% section 'featured-products' %}
+
+{{ content_for_layout }}
+
+{% section 'hero' %}
+
+{{ content_for_layout }}
+
+{% section 'article-template' %}
+
 {{ content_for_layout }}
 
 {% comment %} {{ 'social/social-icons.css' | global_asset_url | stylesheet_tag }} <!-- social media logos -->

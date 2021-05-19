@@ -2,7 +2,7 @@
     <h2 class="featured-products_heading">
         {{ collections[section.settings.collection].title }}
     </h2>
-
+    
     <div class= "featured-products_items">
         {% render 'product-tile' for collections[section.settings.collection].products as product %}
     </div>
