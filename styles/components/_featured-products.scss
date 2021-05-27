@@ -3,7 +3,7 @@
     margin-right: auto;
     max-width: 1200px;
     padding-bottom: 50px;
-    padding-top: 50px;
+    padding-top: 50px 20px;
 }
 
 .featured-products_heading {
@@ -13,6 +13,7 @@
 .featured-products_items {
     align-items: flex-start;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
 
     .product-tile {

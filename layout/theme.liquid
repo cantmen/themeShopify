@@ -4,34 +4,12 @@
 
   {{ content_for_header }}
 
+  {{ 'theme.css' | asset_url | stylesheet_tag }}
 
   <link rel="preconnect" href="https://fonts.gstatic.com"> 
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
     
-    <style>
-    .header {
-    padding: 60px;
-    text-align: center;
-    background: #1abc9c;
-    color: white;
-    font-size: 30px;
-}
-    .footer {
-    padding: 60px;
-    text-align: center;
-    background: #1abc9c;
-    color: white;
-    font-size: 30px;
-}
-    </style>
-      <style>
-    .socialmedia  {
-    width: 300px;
-    border: 15px solid green;
-    padding: 50px;
-    margin: 20px;
-    }
-     </style>
+
 
      {%- if template.name == 'index' -%}
   <h1 itemscope itemtype="http://schema.org/Organization">
@@ -39,11 +17,7 @@
   <div itemscope itemtype="http://schema.org/Organization">
 {%- endif -%}
 
-  <a href="/" itemprop="url">
-    <img src="{{ "logo.svg" | asset_url }}"
-      alt="{{ shop.name }}"
-      itemprop="logo">
-  </a>
+
 
 
 {%- if template.name == 'index' -%}
@@ -63,7 +37,6 @@
     {{ 'application.css' | asset_url | stylesheet_tag }}
     {{ 'application.js' | asset_url | script_tag }}
 
-  <link rel="stylesheet" href="styles.css">
 
 </head>
 
@@ -72,155 +45,12 @@
 
 {% section 'header' %}
 
-{{ content_for_layout }}
-
+{% section 'hero' %}
 
 {% section 'featured-products' %}
 
-{{ content_for_layout }}
-
-{% section 'hero' %}
-
-{{ content_for_layout }}
-
 {% section 'article-template' %}
-
 {{ content_for_layout }}
-
-
-{% comment %} {{ 'social/social-icons.css' | global_asset_url | stylesheet_tag }} <!-- social media logos -->
-
-<div hidden>
-  <span id="new-window-0">Opens in a new window</span>
-</div>
-<ul class="socialmedia">
-  <li>
-    <a href="https://facebook.com/shopify"
-      target="_blank"
-      rel="noopener"
-      aria-label="Facebook"
-      aria-describedby="new-window-0">
-      <span class="shopify-social-icon-facebook-circle" aria-hidden="true"></span>
-    </a>
-  </li>
-  <li>
-    <a href="https://twitter.com/shopify"
-      target="_blank"
-      rel="noopener"
-      aria-label="Twitter"
-      aria-describedby="new-window-0">
-      <span class="visuallyhidden">Twitter</span>
-      <span class="shopify-social-icon-twitter-circle" aria-hidden="true"></span>
-    </a>
-  </li>
-  <li>
-    <a href="https://pinterest.com/shopify/"
-      target="_blank"
-      rel="noopener"
-      aria-label="Pinterest"
-      aria-describedby="new-window-0">
-      <span class="shopify-social-icon-pinterest-circle" aria-hidden="true"></span>
-    </a>
-  </li>
-  <li>
-    <a href="https://instagram.com/shopify/"
-      target="_blank"
-      rel="noopener"
-      aria-label="Instagram"
-      aria-describedby="new-window-0">
-      <span class="shopify-social-icon-instagram-circle" aria-hidden="true"></span>
-    </a>
-  </li>
-</ul> <!-- social media logos -->
-
-  {% for link in linklists.main-menu.links %}
-    {% assign child_list_handle = link.title | handleize %}
-    {% if linklists[child_list_handle].links != blank %}
-      <a href="{{ link.url }}">{{ link.title }}</a>
-      [{% for childlink in linklists[child_list_handle].links %}
-        <a href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
-      {% endfor %}]
-    {% else %}
-      <a href="{{ link.url }}">{{ link.title }}</a>
-    {% endif %}
-  {% endfor %}
-
- <a href="/cart">cart</a>
-
-<div class="header">
-  <h1>Header</h1>
-  <p>My header</p>
-</div>
-
- {%- if template.name == 'index' -%}
-  <h1 itemscope itemtype="http://schema.org/Organization">
-{%- else -%}
-  <div itemscope itemtype="http://schema.org/Organization">
-{%- endif -%}
-
-
-
-{%- if template.name == 'index' -%}
-  </h1>
-{%- else -%}
-  </div>
-{%- endif -%}
-
-  {% if shop.customer_accounts_enabled %}
-    {% if customer %}
-      <a href="/account">account</a>
-      {{ 'log out'  | customer_logout_link }}
-    {% else %}
-      {{ 'log in ' | customer_login_link }}
-      {{ 'register' | customer_register_link }}
-    {% endif %}
-  {% endif %}
-
-  <main role="main">
-    {{ content_for_layout }}
-  </main>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
-
-  <h1>{{ page_title }}</h1>
-
-  {%- for collection in collections -%}
-    
-    <p> {{ collection.title }} - <a href="{{ collection.url }}"> click here </a> </p>
-
-    <ul> 
-
-      {%- for product in collection.products -%}
-        <li>
-          <p> <a href="{{ product.url }}"> {{ product.title }} </a> </p>
-          <img src="{{ product | img_url: '160x' }}"/>
-
-        <!-- {%- if collection.image -%}
-            {%- assign collection_image = collection.image -%}
-          {%- elsif product and collection.products.images != empty -%}
-            {%- assign collection_image = collection.products.featured_image -%}
-          {%- else -%}
-            {%- assign collection_image = blank -%}
-          {%- endif -%}
-
-          <a href="{{ collection.url }}">
-            <img src="{{ collection_image | img_url: '480x' }}" alt="">
-            {{ collection.title }}
-          </a> -->
-        </li>
-      {%- endfor -%}
-
-    </ul>
-
-  {%- endfor -%} 
-
-
-
-<div class="footer">
-  <h1> <a href="{{ aboutus }}">About Us </a> </h1>
-  {%- for collection in collections -%}
-    <p>  <a href="{{ collection.url }}"> Collections</a></p>
-  {%- endfor -%}
-</div> {% endcomment %}
 
 </body>
 </html>

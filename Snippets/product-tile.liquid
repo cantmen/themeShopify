@@ -1,7 +1,11 @@
-<a href="{{ product.url }}" class= "product-tile">
-    <img class= "product-tile__image " src= " {{ product.featured_image | img_url: 'master' }}" alt="{{ product.featured_image.alt }}" />
-    <div class= "product-tile__info">
-        <h3 class= "product-tile__title"> {{product.title}}</h3>
-        <span class= "product-tile__price"> {{product.price | money}} </span> 
-    </div>
-</a>
+<div class="col-md-4 col-sm-12">
+    <a href="{{ product.url }}" class= "product-tile">
+        <div class="card" style="width: 18rem;">
+            <img class= "product-tile__image img-fluid" src= " {{ product.featured_image | img_url: 'master' }}" alt="{{ product.featured_image.alt }}" />
+            <div class="card-body">
+                <h3 class= "product-tile__title"> {{product.title}}</h3>
+                <span class= "product-tile__price"> {{product.price | money}} </span> 
+            </div>
+        </div>
+    </a>
+</div>
