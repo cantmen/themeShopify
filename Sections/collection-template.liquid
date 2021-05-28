@@ -1,0 +1,18 @@
+<div class="collection" >
+    <div class= "collection__image-wrapper">
+        <img class= "collection__image" src="{{ collection.image | img_url: 'master' }}" alt="{{ collection.image. alt }}" />
+    </div>
+
+    <div class= "collection__wrapper">
+        <header class= "collection__header">
+            <h1 class= "collection__heading">{{collection.title}}</h1>
+            <p class= "collection__description">{{collection.description}}</p>
+        </header>
+
+        <div class= "collection__grid">
+        </div>
+        
+        <div class= "collection__pagination">
+        </div>
+    </div>
+</div>

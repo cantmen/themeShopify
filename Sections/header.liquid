@@ -22,6 +22,7 @@
       {%- endif -%}
     </div>
   {%- endif -%}
+
   <header role="banner">
     {% if template.name == 'index' %}
       <h1>
@@ -72,21 +73,24 @@ alt="{{ section.settings.logo.alt | default: shop.name }}">
         {% endif %}
       </ul>
     {% endif %}
+
     <form action="/search" method="get" role="search">
       <label for="Search-{{ section.id }}" class="label-hidden">
         {{ 'search.placeholder' | t }}
       </label>
       <input type="search"
-name="q"
-id="Search-{{ section.id }}"
-value="{{ search.terms | escape }}"
-placeholder="{{ 'search.placeholder' | t }}">
+              name="q"
+              id="Search-{{ section.id }}"
+              value="{{ search.terms | escape }}"
+              placeholder="{{ 'search.placeholder' | t }}">
       <button type="submit" class="button">
         {% include 'icon-search' %}
         <span class="icon-fallback-text">{{ 'search.submit' | t }}</span>
       </button>
     </form> 
+    
   </header>
+
   <nav role="navigation">
     <ul>
       {% for link in linklists[section.settings.menu].links %}
@@ -116,7 +120,9 @@ placeholder="{{ 'search.placeholder' | t }}">
       {% endfor %}
     </ul>
   </nav>
+
 </section>
+
 {% if section.settings.logo != blank %}
   <style>
     .logo-image {
